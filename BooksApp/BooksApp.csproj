@@ -171,12 +171,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\BooksHelper.cs" />
-    <Compile Include="Infrastructure\Entities.cs" />
-    <Compile Include="Infrastructure\Providers\BooksXmlExceptions.cs" />
-    <Compile Include="Infrastructure\Providers\XmlBooksProviderBase.cs" />
-    <Compile Include="Infrastructure\Providers\IBooksProvider.cs" />
-    <Compile Include="Infrastructure\Providers\XmlBooksProvider.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +285,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\Books.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BooksApp.BLL\BooksApp.BLL.csproj">
+      <Project>{100E42DD-4A80-4724-A774-B5574F8C207D}</Project>
+      <Name>BooksApp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BooksApp.DAL\BooksApp.DAL.csproj">
+      <Project>{D8028200-E4A6-4CCC-A810-822DE90ED4BE}</Project>
+      <Name>BooksApp.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BooksApp.Interfaces\BooksApp.Interfaces.csproj">
+      <Project>{E976E1C2-E31C-47C1-876B-8BC56C7873BC}</Project>
+      <Name>BooksApp.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

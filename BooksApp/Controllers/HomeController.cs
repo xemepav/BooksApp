@@ -1,13 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
-using BooksApp.Infrastructure;
+using BooksApp.DAL;
+using BooksApp.Interfaces;
 using BooksApp.Models;
 
 namespace BooksApp.Controllers
 {
     public class HomeController : Controller
     {
+        private IRepository Repository { get; set; }
+
+        public HomeController()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            Repository = new SqlRepository(connectionString);
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -27,13 +37,13 @@ namespace BooksApp.Controllers
 
         private IEnumerable<BookModel> GetBooks(string searchString = null)
         {
-            return BooksHelper.GetBooksFromDatabase(searchString).Select(
+            return Repository.GetBooks(searchString).Select(
                 book => new BookModel
                         {
                             Isbn = book.Isbn,
                             Author = book.Author,
                             Title = book.Title,
-                            Providers = string.Join(", ", BooksHelper.GetProvidersForBook(book.Id).Select(prov => prov.Name)),
+                            Providers = string.Join(", ", Repository.GetProvidersForBook(book.Id).Select(prov => prov.Name)),
                         });
         }
     }

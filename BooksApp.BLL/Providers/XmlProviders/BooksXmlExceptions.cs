@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BooksApp.Infrastructure.Providers
+namespace BooksApp.BLL.Providers.XmlProviders
 {
     public class BooksXmlNotFoundException : Exception
     {
@@ -14,6 +14,7 @@ namespace BooksApp.Infrastructure.Providers
         {
 
         }
+
         public BooksXmlNotFoundException(string message, Exception innerException)
             : base(message, innerException)
         {
@@ -33,6 +34,7 @@ namespace BooksApp.Infrastructure.Providers
         {
 
         }
+
         public BooksXmlInvalidException(string message, Exception innerException)
             : base(message, innerException)
         {

@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
-namespace BooksApp.Infrastructure.Providers
+namespace BooksApp.BLL.Providers.XmlProviders
 {
-    public abstract class XmlBooksProviderBase : IBooksProvider
+    public abstract class XmlBooksProviderBase : BooksProviderBase
     {
-        protected string BooksXml;
+        protected string BooksXmlFilePath;
 
-        protected XmlBooksProviderBase(string booksXmlFilePath)
+        protected XmlBooksProviderBase(string booksXmlFilePath, string providerName = null)
+            : base(providerName)
         {
             if (string.IsNullOrWhiteSpace(booksXmlFilePath))
             {
@@ -20,9 +20,7 @@ namespace BooksApp.Infrastructure.Providers
                 throw new BooksXmlNotFoundException();
             }
 
-            BooksXml = File.ReadAllText(booksXmlFilePath);
+            BooksXmlFilePath = booksXmlFilePath;
         }
-
-        public abstract IEnumerable<Book> GetBooks();
     }
 }
