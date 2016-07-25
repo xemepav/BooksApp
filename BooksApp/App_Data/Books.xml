@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Books xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Books.xsd">
+	<Book>
+		<ISBN>978-3-16-148410-0</ISBN>
+		<Author>John Doe</Author>
+		<Title>John's Life</Title>
+	</Book>
+	<Book>
+		<ISBN>978-3-16-148410-1</ISBN>
+		<Author>John Doe</Author>
+		<Title>John's Life Second Edition</Title>
+	</Book>
+	<Book>
+		<ISBN>978-3-16-148410-2</ISBN>
+		<Author>John Doe</Author>
+		<Title>John's Life Director's Cut</Title>
+	</Book>
+</Books>

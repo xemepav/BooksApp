@@ -1,0 +1,56 @@
+﻿@using BooksApp.Models
+
+@model IndexModel
+
+@{
+    ViewBag.Title = "Books";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<h2>Books available</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(model => model.SearchString)
+    <input type="submit" value="Filter" />
+}
+
+<table>
+    <thead>
+    <tr>
+        <th>ISBN</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Providers</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (BookModel book in Model.Books)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => book.Isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.Providers)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
